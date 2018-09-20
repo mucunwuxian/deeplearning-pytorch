@@ -27,7 +27,7 @@ if __name__ == '__main__':
     '''
     Load data
     '''
-    X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]], dtype=np.float32)
+    x = np.array([[0, 0], [0, 1], [1, 0], [1, 1]], dtype=np.float32)
     y = np.array([0, 1, 1, 1], dtype=np.float32).reshape(-1, 1)
 
     '''
@@ -35,7 +35,7 @@ if __name__ == '__main__':
     '''
     model = BinaryLogisticRegression(input_dim=2)
     criterion = nn.BCELoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+    optimizer = torch.optim.Adam(model.parameters())
 
     '''
     Train model
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     model.train()
     epochs = 300
     for epoch in range(epochs):
-        data = Variable(torch.from_numpy(X))
+        data = Variable(torch.from_numpy(x))
         labels = Variable(torch.from_numpy(y))
 
         optimizer.zero_grad()
@@ -60,7 +60,7 @@ if __name__ == '__main__':
     '''
     val_loss = []
     model.eval()
-    data = Variable(torch.from_numpy(X))
+    data = Variable(torch.from_numpy(x))
     labels = Variable(torch.from_numpy(y))
 
     preds = model(data)

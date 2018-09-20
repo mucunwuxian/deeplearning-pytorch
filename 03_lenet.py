@@ -48,23 +48,23 @@ if __name__ == '__main__':
     Load data
     '''
     batch_size = 100
-    (train_X, train_y), (test_X, test_y) = load_data()
+    (train_x, train_y), (test_x, test_y) = load_data()
 
-    train_X = torch.from_numpy(train_X).float().unsqueeze(-3)
+    train_x = torch.from_numpy(train_x).float().unsqueeze(-3)
     train_y = torch.from_numpy(train_y).long()
-    test_X = torch.from_numpy(test_X).float().unsqueeze(-3)
+    test_x = torch.from_numpy(test_x).float().unsqueeze(-3)
     test_y = torch.from_numpy(test_y).long()
 
-    train_dataset = TensorDataset(train_X, train_y)
-    test_dataset = TensorDataset(test_X, test_y)
+    train_dataset = TensorDataset(train_x, train_y)
+    test_dataset = TensorDataset(test_x, test_y)
 
-    train_loader = torch.utils.data.DataLoader(dataset=train_dataset,
-                                               batch_size=batch_size,
-                                               shuffle=True)
+    train_loader = DataLoader(dataset=train_dataset,
+                              batch_size=batch_size,
+                              shuffle=True)
 
-    test_loader = torch.utils.data.DataLoader(dataset=test_dataset,
-                                              batch_size=batch_size,
-                                              shuffle=False)
+    test_loader = DataLoader(dataset=test_dataset,
+                             batch_size=batch_size,
+                             shuffle=False)
 
     '''
     Build model

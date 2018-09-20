@@ -38,15 +38,15 @@ if __name__ == '__main__':
     Load data
     '''
     batch_size = 100
-    (train_X, train_y), (test_X, test_y) = load_data()
+    (train_x, train_y), (test_x, test_y) = load_data()
 
-    train_X = torch.from_numpy(train_X).float().view(-1, 784)
+    train_x = torch.from_numpy(train_x).float().view(-1, 784)
     train_y = torch.from_numpy(train_y).long()
-    test_X = torch.from_numpy(test_X).float().view(-1, 784)
+    test_x = torch.from_numpy(test_x).float().view(-1, 784)
     test_y = torch.from_numpy(test_y).long()
 
-    train_dataset = TensorDataset(train_X, train_y)
-    test_dataset = TensorDataset(test_X, test_y)
+    train_dataset = TensorDataset(train_x, train_y)
+    test_dataset = TensorDataset(test_x, test_y)
 
     train_loader = torch.utils.data.DataLoader(dataset=train_dataset,
                                                batch_size=batch_size,
