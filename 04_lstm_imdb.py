@@ -66,7 +66,7 @@ if __name__ == '__main__':
     '''
     train_loss = []
     model.train()
-    epochs = 5
+    epochs = 20
     n_batches = len(train_x) // batch_size
 
     for epoch in range(epochs):
