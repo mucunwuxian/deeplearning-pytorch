@@ -69,5 +69,5 @@ if __name__ == '__main__':
 
     predicted = (preds.data > 0.5).float()
     correct = torch.eq(predicted, labels).sum()
-    acc = correct / len(X)
+    acc = correct / labels.size(0)
     print('acc: {:.3}'.format(acc.float().item()))
