@@ -224,7 +224,9 @@ def to_tensor_pairs(idx, src, tgt, device='cpu'):
 
 
 def to_tensor(sentence, device='cpu'):
-    return torch.tensor(sentence[1:], device=device).view(-1, 1)
+    return torch.tensor(sentence[1:],  # trim BOS
+                        dtype=torch.long,
+                        device=device).view(-1, 1)
 
 
 if __name__ == '__main__':
@@ -260,8 +262,8 @@ if __name__ == '__main__':
     Build model
     '''
     maxlen = 30
-    encoder = Encoder(num_x, device=device)
-    decoder = Decoder(num_y, device=device, maxlen=maxlen)
+    encoder = Encoder(num_x, device=device).to(device)
+    decoder = Decoder(num_y, device=device, maxlen=maxlen).to(device)
 
     '''
     Train model
